@@ -56,12 +56,12 @@ DATA_DIR = "C:/Users/gps.84/Downloads/archive/test"
 
 На выбранном дескрипторе (по умолчанию `D_1`) обучаются четыре классификатора, соответствующие моделям из MATLAB-скрипта:
 
-- **Ансамбль ближайших соседей (KNN)** — класс `SubspaceKnnEnsemble`: метод Subspace (случайные подпространства по 28 признаков), 30 базовых KNN-обучений (k=5) — аналог `fitcensemble(..., 'Method','Subspace', 'NumLearningCycles',30, 'Learners','knn', 'NPredToSample',28)`;
-- **Ансамбль деревьев решений (TREE)** — `sklearn.ensemble.BaggingClassifier` с 30 деревьями — аналог `fitcensemble(..., 'Method','Bag', 'Learners','tree')`;
-- **Полносвязная нейронная сеть (NeuralNetwork)** — `sklearn.neural_network.MLPClassifier`: один скрытый слой из 100 нейронов, активация `relu`, `alpha=0` (Lambda = 0), до 1000 итераций, стандартизация — аналог `fitcnet(..., 'LayerSizes',100, 'Activations','relu', 'Standardize',true)`;
-- **Машины опорных векторов (SVC)** — класс `OneVsOneSVCPoly2`: ECOC one-vs-one из SVM с полиномиальным ядром 2-й степени, `C=1` (BoxConstraint), стандартизация — аналог `fitcecoc(..., templateSVM('KernelFunction','polynomial','PolynomialOrder',2,'BoxConstraint',1,'Standardize',true), 'Coding','onevsone')`.
+- **Ансамбль ближайших соседей (KNN)** — класс `SubspaceKnnEnsemble`: метод Subspace (случайные подпространства по 28 признаков), 30 базовых KNN-обучений (k=5);
+- **Ансамбль деревьев решений (TREE)** — `sklearn.ensemble.BaggingClassifier` с 30 деревьями;
+- **Полносвязная нейронная сеть (NeuralNetwork)** — `sklearn.neural_network.MLPClassifier`: один скрытый слой из 100 нейронов, активация `relu`, `alpha=0` (Lambda = 0), до 1000 итераций, стандартизация;
+- **Машины опорных векторов (SVC)** — класс `OneVsOneSVCPoly2`: ECOC one-vs-one из SVM с полиномиальным ядром 2-й степени, `C=1` (BoxConstraint), стандартизация.
 
-Стандартизация признаков (анал `'Standardize', true`) выполняется обёрткой `StandardizedModel`.
+Стандартизация признаков выполняется обёрткой `StandardizedModel`.
 
 ### 4. Распознавание и оценка точности — `evaluate()`
 
